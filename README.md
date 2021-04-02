@@ -1,2 +1,2 @@
-# ExersiseTimer
-Provides GUI app for timing exersise repetitions
+# ExerciseTimer
+Provides GUI app for timing exercise repetitions
