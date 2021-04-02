@@ -35,7 +35,7 @@ public class Timer {
     public void executeExercise(int exerciseTime, int breakTime, int roundsBeforeLargerBreak,
                                 int largeBreakTime, int totalRounds) {
         try {
-            UI.popUp("Timer will start in 5 seconds", "");
+            UI.popUp("Timer will start 5 seconds after dismissing this window", "");
             Thread.sleep(5000);
         }
         catch (InterruptedException e) {
