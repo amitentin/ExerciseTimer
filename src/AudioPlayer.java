@@ -12,4 +12,10 @@ public class AudioPlayer {
         audioClip = (Clip) AudioSystem.getLine(info);
         audioClip.open(audioStream);
     }
+    public void playAndReset(Number seconds) throws InterruptedException {
+        audioClip.start();
+        Thread.sleep((long) seconds.doubleValue()*1000L);
+        audioClip.stop();
+        audioClip.setFramePosition(0);
+    }
 }
