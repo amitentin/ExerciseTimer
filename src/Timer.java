@@ -7,6 +7,9 @@ import static java.lang.Thread.sleep;
 
 public class Timer {
     AudioPlayer audioPlayer;
+    private final static int PLAY_SOUND_ONCE_TIME = 1000;
+    private final static int PLAY_SOUND_TWICE_TIME = 2 * PLAY_SOUND_ONCE_TIME + 500;
+
 
     public Timer(File audioFile) {
         try {
@@ -25,28 +28,36 @@ public class Timer {
         }
     }
 
+    public void executeExercise(int[] input) {
+        executeExercise(input[0], input[1], input[2], input[3], input[4]);
+    }
+
     public void executeExercise(int exerciseTime, int breakTime, int roundsBeforeLargerBreak,
                                 int largeBreakTime, int totalRounds) {
         try {
+            UI.popUp("Timer will start in 5 seconds", "");
             Thread.sleep(5000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-        playSoundTwice();
         for (int i = 0; i < totalRounds; i++) {
             try {
-                if (i % roundsBeforeLargerBreak == 0 && i > 0) {
-                    Thread.sleep(largeBreakTime * 1000L);
-                }
-                Thread.sleep(exerciseTime * 500L);
-                playSoundOnce();
-                Thread.sleep(exerciseTime * 500L);
                 playSoundTwice();
-                Thread.sleep(breakTime * 1000L);
+                if (i % roundsBeforeLargerBreak == 0 && i > 0) {
+                    Thread.sleep((largeBreakTime - breakTime) * 1000L - PLAY_SOUND_TWICE_TIME);
+                    playSoundTwice();
+                }
+                Thread.sleep(exerciseTime * 500L - PLAY_SOUND_TWICE_TIME);
+                playSoundOnce();
+                Thread.sleep(exerciseTime * 500L - PLAY_SOUND_ONCE_TIME);
+                playSoundTwice();
+                Thread.sleep(breakTime * 1000L - PLAY_SOUND_TWICE_TIME);
+
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
+                return;
             }
         }
 
@@ -58,6 +69,7 @@ public class Timer {
         }
         catch (InterruptedException e) {
             e.printStackTrace();
+            return;
         }
     }
 
@@ -69,6 +81,7 @@ public class Timer {
         }
         catch (InterruptedException e) {
             e.printStackTrace();
+            return;
         }
     }
 }
