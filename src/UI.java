@@ -27,7 +27,7 @@ public class UI extends JFrame implements ActionListener {
 
     public UI() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 2000);
+        setSize(800, 300);
         setLocation(0, 0);
         setupConfigFile();
         setupFields();
@@ -72,13 +72,13 @@ public class UI extends JFrame implements ActionListener {
         else {
             chosenFileText.setText("Selected file:" + System.lineSeparator() + chosenFile.getAbsolutePath());
         }
-        chosenFileText.setBounds(450, 60, 300, 32);
+        chosenFileText.setBounds(500, 60, 300, 32);
 
         fileChooser = new JFileChooser();
         fileChooser.setFileFilter(audioFilter);
-        openButton = new JButton("Open File selection:");
+        openButton = new JButton("Select Sound File");
         openButton.addActionListener(this);
-        openButton.setBounds(450, 30, 200, 30);
+        openButton.setBounds(500, 30, 200, 30);
         add(openButton);
         add(chosenFileText);
     }
@@ -88,8 +88,8 @@ public class UI extends JFrame implements ActionListener {
         for (int i = 0; i < messages.length; i++) {
             JLabel label = new JLabel(messages[i]);
             JFormattedTextField field = new JFormattedTextField(NumberFormat.getIntegerInstance());
-            field.setBounds(200, 30 * (i + 1), 200, 16);
-            label.setBounds(0, 30 * (i + 1), 200, 16);
+            field.setBounds(275, 30 * (i + 1), 200, 16);
+            label.setBounds(0, 30 * (i + 1), 275, 16);
             add(label);
             add(field);
             InputFields[i] = field;
