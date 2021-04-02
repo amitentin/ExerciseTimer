@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class UI extends JFrame implements ActionListener {
 
     private final String[] messages = {"Exercise Time:", "Break time:", "Rounds before larger break:",
-            "Large brake time:", "Total rounds:"};
+            "Large break time:", "Total rounds:"};
     private JTextField[] InputFields = new JTextField[messages.length];
     private JButton openButton;
     private JFileChooser fileChooser;
